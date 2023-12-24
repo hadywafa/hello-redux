@@ -13,18 +13,23 @@ const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    incremented(state) {
-      // it's okay to do this because immer makes it immutable
-      // under the hood
+    increment(state) {
+      // it's okay to do this because immer(library used inside @reduxjs/toolkit) makes it immutable under the hood
       state.value++;
     },
     amountAdded(state, action: PayloadAction<number>) {
       state.value += action.payload;
     },
     // decrement
+    decrement(state) {
+      state.value--;
+    },
     // reset
+    reset(state) {
+      state.value = 0;
+    },
   },
 });
 
-export const { incremented, amountAdded } = counterSlice.actions;
+export const { increment, amountAdded, decrement, reset } = counterSlice.actions;
 export default counterSlice.reducer;
